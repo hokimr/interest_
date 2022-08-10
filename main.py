@@ -6,12 +6,12 @@ from flask_wtf import FlaskForm
 from wtforms import Form, BooleanField, StringField, validators,SubmitField
 from wtforms.validators import DataRequired, URL
 from flask_sqlalchemy import SQLAlchemy
+import os
 
-
-openai.api_key = "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"
+openai.api_key = os.environ.get('api_key')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "sdasdsasadasdasdsad"
+app.config['SECRET_KEY'] = os.environ.get('config_key')
 Bootstrap(app)
 
 

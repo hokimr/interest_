@@ -8,10 +8,10 @@ from wtforms.validators import DataRequired, URL
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-openai.api_key = os.environ.get('api_key')
+openai.api_key = os.environ.get('MySecret')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('config_key')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 Bootstrap(app)
 
 

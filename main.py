@@ -1,6 +1,6 @@
 import openai
 import re
-from flask import Flask,render_template,redirect,url_for,request
+from flask import Flask,render_template,redirect,url_for,request,send_from_directory
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import Form, BooleanField, StringField, validators,SubmitField
@@ -10,7 +10,7 @@ import os
 
 openai.api_key = os.environ.get('MySecret')
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 Bootstrap(app)
 
@@ -27,6 +27,11 @@ Positive_percent=0
 Negative_percent=0
 result_message = ''
 
+
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
 
 @app.route('/',methods=["GET", "POST"])
 def home():

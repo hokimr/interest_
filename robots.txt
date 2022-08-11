@@ -1,3 +1,0 @@
-User-agent: *
-Allow:/
-Sitemap: https://sensitivitytest.herokuapp.com/sitemap.xml
